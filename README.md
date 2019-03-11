@@ -122,3 +122,22 @@ to tool pprof http://localhost:8070/degbug/pprof/block //goroutines
 to tool pprof http://localhost:8070/degbug/pprof/trace?seconds=5 //trace
 
 http://localhost:8070/debug/pprof
+
+
+# Commandline tool
+ 
+ go tool pprof http://localhost:8080/debug/pprof/heap
+
+ top
+
+ top
+Showing nodes accounting for 2454.85kB, 100% of 2454.85kB total
+Showing top 10 nodes out of 39
+      flat  flat%   sum%        cum   cum%
+  902.59kB 36.77% 36.77%   902.59kB 36.77%  compress/flate.NewWriter
+  528.17kB 21.52% 58.28%   528.17kB 21.52%  io.copyBuffer
+  512.09kB 20.86% 79.14%   512.09kB 20.86%  compress/flate.newHuffmanEncoder (inline)
+  512.01kB 20.86%   100%   512.01kB 20.86%  vendor/golang_org/x/net/http2/hpack.addDecoderNode
+         0     0%   100%   512.09kB 20.86%  compress/flate.init
+         0     0%   100%   512.09kB 20.86%  compress/flate.init.0
+         0     0%   100%   902.59kB 36.77%  compress/gzip.(*Writer).Write
