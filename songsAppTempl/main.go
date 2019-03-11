@@ -3,7 +3,6 @@ package main
 import (
 	"database/sql"
 
-	"fmt"
 	"html/template"
 	"io/ioutil"
 	"log"
@@ -22,15 +21,17 @@ func main() {
 	db := connectToDatabase()
 	defer db.Close()
 	controller.Startup(templates)
-	http.ListenAndServe(":8070", &middleware.TimeoutMiddleware{new(middleware.GzipMiddleware)})
+	http.ListenAndServeTLS(":8070", "cert.pem", "key.pem", &middleware.TimeoutMiddleware{new(middleware.GzipMiddleware)})
 
 }
 
 func connectToDatabase() *sql.DB {
-	db, err := sql.Open("postgres", "postgres://postgres:songs@localhost/postgres?sslmode=disable")
+	connStr := "postgres://postgres:songs@localhost/postgres?sslmode=verify-full"
+	db, err := sql.Open("postgres", connStr)
 	if err != nil {
-		log.Fatalln(fmt.Errorf("Unable to connect to database: %v", err))
+		log.Fatal(err)
 	}
+
 	model.SetDatabase(db)
 	return db
 }

@@ -54,3 +54,41 @@ type Data struct {
     Event string
     AuthorName string
 }
+
+
+### Https (Automatically upgrades to HTTP2)
+
+1. Generate certs
+   1. go run $GOROOT/src/crypto/tls/generate_cert.go -host localhost (run in the application root)
+   2. Add http.ListenAndServeTLS(":8070", "cert.pem", "key.pem", &middleware.TimeoutMiddleware{new(middleware.GzipMiddleware)})
+
+Header and Body are sent together in HTTP1
+
+Header cannot be encrypted. 
+
+
+  *Http/2  Streaming* - **Independant pipelines within an application**
+Information is sent in frames. optimized independantly
+
+Headers exchjanged 
+continuation frames. 
+DATA sent independantly
+Each data type optimized independantly
+
+Compressend and independant of the data. 
+Advantages: 
+1. Request multiplexing. 
+2. Header compression. 
+3. Reduced data
+4. Secure by default. 
+   * server push sends related stylesheets ahead. preemptively
+   * reduces requests
+
+Caveat: 
+
+    Can make app less efficient.  Resources are pushed every time so that client side cache has not benefit. 
+    
+
+
+
+

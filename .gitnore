@@ -1,0 +1,85 @@
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj
+_test
+_Comcast
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+*comcast*
+*Comcast*
+*Comcast*.*
+*comcast*.*
+
+_testmain.go
+
+*.exe
+*.test
+*.prof
+*.pem
+
+# WebStorm
+*.iml
+
+# Directory-based project format:
+.idea/
+.idea/workspace.xml
+**/.idea/workspace.xml
+
+# mac hidden files
+.DS_Store
+
+#other
+
+
+srcfiles/
+97817*
+node_modules/
+bower_components/
+sourcegraph.com/
+.tmp
+.sass-cache
+builds/**/images/*
+*.ogg
+*.mp3
+*.mp4
+#*.png
+#*.jpeg
+Comcast/
+VDE/
+github.comcast.com/
+vdecm09report/
+github.com/
+golang.org/
+google.golang.org/genproto/
+google.golang.org/grpc/
+
+integration*
+97817*/
+golang.golang.org/*
+gopkg.in/
+gopkg.in/go-playground/validator.v8
+gopkg.in/yaml.v2/
+scte35Monitor/
+
+
+# security / ssl
+*.pem
+*.xxjson
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
