@@ -110,3 +110,15 @@ type ResponseRecorder {
     Body *byptes.Buffer
     Flushed bool
 }
+
+
+Profiling
+
+import _ "net/http/pprof"
+
+to tool pprof http://localhost:8070/degbug/pprof/heap //memory
+to tool pprof http://localhost:8070/degbug/pprof/profile //CPU
+to tool pprof http://localhost:8070/degbug/pprof/block //goroutines
+to tool pprof http://localhost:8070/degbug/pprof/trace?seconds=5 //trace
+
+http://localhost:8070/debug/pprof

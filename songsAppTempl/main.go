@@ -11,6 +11,8 @@ import (
 
 	"github.com/JayneJacobs/songsWebAppwtemplwDB/songsAppTempl/model"
 
+	_ "net/http/pprof"
+
 	"github.com/JayneJacobs/songsWebAppwtemplwDB/songsAppTempl/controller"
 	"github.com/JayneJacobs/songsWebAppwtemplwDB/songsAppTempl/middleware"
 	_ "github.com/lib/pq"
@@ -21,6 +23,7 @@ func main() {
 	db := connectToDatabase()
 	defer db.Close()
 	controller.Startup(templates)
+	go http.ListenAndServe(":8070", nil)
 	http.ListenAndServeTLS(":8070", "cert.pem", "key.pem", &middleware.TimeoutMiddleware{new(middleware.GzipMiddleware)})
 
 }
