@@ -31,7 +31,7 @@ func connectToDatabase() *sql.DB {
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	//inject db connection into model layer
 	model.SetDatabase(db)
 	return db
 }

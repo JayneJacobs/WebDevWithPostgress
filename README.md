@@ -84,11 +84,29 @@ Advantages:
    * server push sends related stylesheets ahead. preemptively
    * reduces requests
 
-Caveat: 
+## Caveat: 
 
     Can make app less efficient.  Resources are pushed every time so that client side cache has not benefit. 
     
 
+## Testing:
+Prefix with Test                  Aways take a pointer to a test object
+func *Test*UpdatesLastLoginTime(t *testing.T) {
+    ....
+}
+
+Controller Layer
+
+func (h home) handleHome (w http.ResponseWriter, r *http.request){}
 
 
+net/http/httptest
 
+func NewRequest(method, target string, body io.Reader) *http.Request
+
+type ResponseRecorder {
+    Code int
+    HeaderMap http.Header
+    Body *byptes.Buffer
+    Flushed bool
+}
